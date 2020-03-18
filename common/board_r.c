@@ -61,9 +61,6 @@
 #include <version.h>
 #include <spi_flash.h>
 
-#define CONFIG_SPI_ENV_OFFSET	(768 * 1024)
-#define CONFIG_SPI_ENV_SIZE	(8 * 1024)
-
 struct boardcfg_t {
     unsigned char mac[6];
     unsigned char sn[10];
@@ -71,7 +68,15 @@ struct boardcfg_t {
 };
 
 static struct spi_flash *flash;
+#define CONFIG_SPI_ENV_SIZE	(8 * 1024)
 #endif /* CONFIG_ADVANTECH */
+
+#if defined(CONFIG_ADVANTECH)
+#define CONFIG_SPI_ENV_OFFSET	(768 * 1024)
+#elif defined(CONFIG_ADVANTECH_MX8)
+#define CONFIG_SPI_ENV_OFFSET	(4096 * 1024)
+#endif
+
 
 DECLARE_GLOBAL_DATA_PTR;
 

@@ -752,10 +752,7 @@ size_t display_count = ARRAY_SIZE(displays);
 
 int board_late_init(void)
 {
-#ifdef CONFIG_ENV_IS_IN_MMC
 	board_late_mmc_env_init();
-#endif
-
 	return 0;
 }
 
