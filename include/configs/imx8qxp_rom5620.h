@@ -127,11 +127,11 @@
 
 #if (CONFIG_FEC_ENET_DEV == 0)
 #define IMX_FEC_BASE			0x5B040000
-#define CONFIG_FEC_MXC_PHYADDR          0x0
+#define CONFIG_FEC_MXC_PHYADDR          0x4
 #define CONFIG_ETHPRIME                 "eth0"
 #elif (CONFIG_FEC_ENET_DEV == 1)
 #define IMX_FEC_BASE			0x5B050000
-#define CONFIG_FEC_MXC_PHYADDR          0x1
+#define CONFIG_FEC_MXC_PHYADDR          0x6
 #define CONFIG_ETHPRIME                 "eth1"
 #endif
 
@@ -432,6 +432,11 @@
 #include "imx8qxp_mek_android.h"
 #elif defined (CONFIG_ANDROID_AUTO_SUPPORT)
 #include "imx8qxp_mek_android_auto.h"
+#endif
+
+/* OTA support */
+#ifndef CONFIG_ANDROID_SUPPORT
+#include "adv_imx_ota.h"
 #endif
 
 #endif /* __IMX8QXP_ROM5620_H */
